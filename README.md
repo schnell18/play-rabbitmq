@@ -17,7 +17,7 @@ This environment include a RabbitMQ broker and an management node.
 To access the RabbitMQ broker, you may attach to the docker container
 by typing:
 
-    sudo docker exec -it rabbit01 /bin/bash
+    docker exec -it rabbit01 /bin/bash
 
 To access the admin webui, you open a web browser and navigate to [http://localhost:8001][3].
 
@@ -52,7 +52,36 @@ To play with the python lab you should install the [pika library][2] as follows:
 
 ### Hello World
 
+Open 2 consoles, in the first console, run the receiver as follows:
+
+    cd labs/python/hello
+    python receive.py
+
+In the second console, run the sender as follows:
+
+    cd labs/python/hello
+    python send.py
+
+
 ### Work Queue
+
+Open 2 or more consoles and run the following command in each console:
+
+    cd labs/python/queue
+    python worker.py
+
+Then generates task to do as follows:
+
+    cd labs/python/queue
+    python new-task.py First message.
+    python new-task.py Second message..
+    python new-task.py Third message...
+    python new-task.py Forth message....
+    python new-task.py Fifth message.....
+    python new-task.py Sixth message......
+    python new-task.py Seventh message.......
+    python new-task.py Eighth message........
+    python new-task.py Nineth message.........
 
 ### Publish/Subscribe
 

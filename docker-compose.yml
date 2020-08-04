@@ -1,13 +1,16 @@
-# dockerized virtual environment for ELK
+# dockerized virtual environment for RabbitMQ
 version: '3'
 services:
   rabbit:
-    image: rabbitmq:3.8
+    image: rabbitmq:3.8-management-alpine
     container_name: rabbit01
     hostname: rabbit01
     environment:
       - RABBITMQ_NODENAME=rabbit01
+      - RABBITMQ_DEFAULT_VHOST=myvhost
       - RABBITMQ_VM_MEMORY_HIGH_WATERMARK=0.56
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
     ulimits:
       memlock:
         soft: -1
@@ -17,16 +20,6 @@ services:
       - ./provision/global/etc/timezone:/etc/timezone
     ports:
       - 5672:5672
-    networks:
-      - rabbitmq
-
-  mgmt:
-    image: rabbitmq:3-management
-    container_name: rabbit-mgmt
-    volumes:
-      - ./provision/global/etc/localtime:/etc/localtime
-      - ./provision/global/etc/timezone:/etc/timezone
-    ports:
       - 8001:15672
     networks:
       - rabbitmq

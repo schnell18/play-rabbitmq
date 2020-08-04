@@ -13,6 +13,14 @@ To bring up the environment you type:
 
 under the top level directory of this project.
 
+This environment include a RabbitMQ broker and an management node.
+To access the RabbitMQ broker, you may attach to the docker container
+by typing:
+
+    sudo docker exec -it rabbit01 /bin/bash
+
+To access the admin webui, you open a web browser and navigate to [http://localhost:8001][3].
+
 ## labs
 
 This project follows [the official rabbitmq tutorial][1] and contains exactly six
@@ -56,3 +64,4 @@ To play with the python lab you should install the [pika library][2] as follows:
 
 [1]: https://www.rabbitmq.com/getstarted.html
 [2]: https://pypi.org/project/pika/
+[3]: http://localhost:8001/

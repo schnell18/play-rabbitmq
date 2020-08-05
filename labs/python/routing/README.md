@@ -4,9 +4,12 @@ Explore rabbitmq routing.
 
 ## test instruction
 
-Open 2 or more console and run the following command in each console:
+Open four consoles and run the following command in each console:
 
-    python receive-logs-direct.py info warn error
+    python receive-log-direct.py info
+    python receive-log-direct.py warn
+    python receive-log-direct.py error
+    python receive-log-direct.py info warn error
 
 Then emit logs as follows:
 

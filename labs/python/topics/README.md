@@ -6,10 +6,10 @@ Explore rabbitmq routing.
 
 Open four consoles and run the following command in each console:
 
-    python receive-logs-topic.py '#'
-    python receive-logs-topic.py 'kern.*
-    python receive-logs-topic.py '*.critical'
-    python receive-logs-topic.py 'kern.* '*.critical'
+    python receive-log-topic.py '#'
+    python receive-log-topic.py 'kern.*
+    python receive-log-topic.py '*.critical'
+    python receive-log-topic.py 'kern.* '*.critical'
 
 Then emit logs as follows:
 

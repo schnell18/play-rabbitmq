@@ -85,11 +85,76 @@ Then generates task to do as follows:
 
 ### Publish/Subscribe
 
+Open four consoles and run the following command in each console:
+
+    cd labs/python/pub-sub
+    python receive-log.py
+    python receive-log.py
+    python receive-log.py
+    python receive-log.py
+
+Then emit logs as follows:
+
+    cd labs/python/pub-sub
+    python emit-log.py info good to see you
+    python emit-log.py info hi
+    python emit-log.py info bye
+    python emit-log.py warn fire
+    python emit-log.py error opos
+
 ### Routing
+
+Open four consoles and run the following command in each console:
+
+    cd labs/python/routing
+    python receive-logs-direct.py info
+    python receive-logs-direct.py warn
+    python receive-logs-direct.py error
+    python receive-logs-direct.py info warn error
+
+Then emit logs as follows:
+
+    cd labs/python/routing
+    python emit-log-direct.py info good to see you
+    python emit-log-direct.py info hi
+    python emit-log-direct.py info bye
+    python emit-log-direct.py warn fire
+    python emit-log-direct.py error opos
 
 ### Topics
 
+Open four consoles and run the following command in each console:
+
+    cd labs/python/topic
+    python receive-logs-topic.py '#'
+    python receive-logs-topic.py 'kern.*
+    python receive-logs-topic.py '*.critical'
+    python receive-logs-topic.py 'kern.* '*.critical'
+
+Then emit logs as follows:
+
+    cd labs/python/topic
+    python emit-log-topic.py "kern.critical" "A critical kernel panic"
+    python emit-log-topic.py "anon.critical" "A fake kernel panic"
+    python emit-log-topic.py "kern.info" "A real kernel notice"
+    python emit-log-topic.py "anon.warn" "A real annoying notice"
+
 ### RPC
+
+Open three consoles and run the following command in each console:
+
+    cd labs/python/rpc
+    python rpc-server.py
+    python rpc-server.py
+    python rpc-server.py
+
+Then request fibonacci calculation as follows:
+
+    cd labs/python/rpc
+    python rpc-client.py 0 1 2 3 4 5
+    python rpc-client.py 10 20 30 40 50
+    python rpc-client.py 100 200 300 400 500
+    python rpc-client.py 1000 2000 3000 4000 5000
 
 [1]: https://www.rabbitmq.com/getstarted.html
 [2]: https://pypi.org/project/pika/

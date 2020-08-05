@@ -7,7 +7,12 @@ def callback(ch, method, properties, body):
 
 if __name__ == '__main__':
     try:
-        connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
+        connection = pika.BlockingConnection(
+            pika.ConnectionParameters(
+                host='localhost',
+                virtual_host='myvhost'
+            )
+        )
         channel = connection.channel()
         channel.queue_declare(queue='hello')
         channel.basic_consume(

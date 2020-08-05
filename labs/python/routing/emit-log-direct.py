@@ -4,7 +4,8 @@ import pika
 import sys
 
 if __name__ == '__main__':
-    message = ' '.join(sys.argv[1:]) or "info: Hello World!"
+    severity = sys.argv[1] if len(sys.argv) > 1 else 'info'
+    message = ' '.join(sys.argv[2:]) or "Hello World!"
     connection = pika.BlockingConnection(
         pika.ConnectionParameters(
             host='localhost',
@@ -12,11 +13,11 @@ if __name__ == '__main__':
         )
     )
     channel = connection.channel()
-    channel.exchange_declare(exchange='logs', exchange_type='fanout')
+    channel.exchange_declare(exchange='direct_logs', exchange_type='direct')
     channel.basic_publish(
-        exchange='logs',
-        routing_key='',
+        exchange='direct_logs',
+        routing_key=severity,
         body=message
     )
-    print(" [x] Send 'message: %s!'" % message)
+    print(" [x] Sent %r: %r!'" % (severity, message))
     connection.close()

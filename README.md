@@ -1,6 +1,6 @@
 # Introduction
 
-Tinker w/ RabbitMQ.
+Tinker w/ RabbitMQ in Python and Golang.
 
 ## Startup the environment
 
@@ -43,6 +43,11 @@ The following table lists the directory corresponding to each part.
 | Routing            | labs/python/routing      |
 | Topics             | labs/python/topics       |
 | RPC                | labs/python/rpc          |
+| Hello World        | labs/golang/hello        |
+| Work Queue         | labs/golang/workers      |
+| Publish/Subscribe  | labs/golang/pub-sub      |
+| Routing            | labs/golang/routing      |
+| Topics             | labs/golang/topics       |
 
 To play with the python lab you should install the [pika library][2] as follows:
 
